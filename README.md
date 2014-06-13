@@ -6,4 +6,4 @@ A simple Python inline calculator.
 
 [Supports only basic 4 operations as of now]
 
-Code Available at <a href="http://ideone.com/lOkxei">Ideone</a>
+Code Available at <a href="http://ideone.com/lOkxei" target="_blank">Ideone</a>
