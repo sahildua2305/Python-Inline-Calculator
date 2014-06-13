@@ -1,6 +1,10 @@
+# Take input string to be operated. Make sure there is no space in it. If there is just remove it.
 s = raw_input()
+# Array of permitted operations
 op_arr = ['/', '*', '+', '-']
 
+# Formatting of input string into a list of numbers and operations between them
+# For Example: For input - '23+2*2-54/27', this function will return ['23', '+', '2', '*', '2', '-', '54', '/', '27']
 def format_input(s, op_arr):
 	data = []
 	count = 0
@@ -13,6 +17,7 @@ def format_input(s, op_arr):
 			data.append(s[count:])
 	return data
 
+# For performing one division operation
 def divide(data):
 	div_pos = data.index('/')
 	div_res = float(data[div_pos-1]) / float(data[div_pos+1])
@@ -21,6 +26,7 @@ def divide(data):
 	data.pop(div_pos)
 	return data
 
+# For performing one multiplication operation
 def multiply(data):
 	mul_pos = data.index('*')
 	mul_res = float(data[mul_pos-1]) * float(data[mul_pos+1])
@@ -29,6 +35,7 @@ def multiply(data):
 	data.pop(mul_pos)
 	return data
 
+# For performing one addition operation
 def add(data):
 	add_pos = data.index('+')
 	add_res = float(data[add_pos-1]) + float(data[add_pos+1])
@@ -37,6 +44,7 @@ def add(data):
 	data.pop(add_pos)
 	return data
 
+# For performing one subtraction operation
 def subtract(data):
 	sub_pos = data.index('-')
 	sub_res = float(data[sub_pos-1]) - float(data[sub_pos+1])
@@ -47,12 +55,21 @@ def subtract(data):
 
 
 data = format_input(s, op_arr)
+# Perform 'divide' operation for every '/' in the input
 while '/' in data:
 	data = divide(data)
+	
+# Perform 'multiply' operation for every '*' in the input
 while '*' in data:
 	data = multiply(data)
+	
+# Perform 'add' operation for every '+' in the input
 while '+' in data:
 	data = add(data)
+	
+# Perform 'subtract' operation for every '-' in the input
 while '-' in data:
 	data = subtract(data)
+
+# The final result will be a list with just one element, which will be our required output
 print data[0]
